@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Book App</string>
+    <string name="welcome">مرحبا بك في برنامج أطلب كتاب</string>
+    <string name="Signup">مستخدم جديد؟ سجل</string>
+    <string name="admin">لوحة الادمن</string>
+    <string name="abc_examole_com">abc@examole.com</string>
+    <string name="todo">TODO</string>
+    <string name="nn">+ أضافة فئة</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
