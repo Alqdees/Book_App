@@ -11,39 +11,40 @@
         android:layout_height="200dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/mgr" />
+
     <RelativeLayout
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@drawable/toolbar1">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="البروفايل"
             android:layout_centerInParent="true"
-            android:textSize="18sp"
+            android:text="البروفايل"
             android:textColor="@color/black"
-            android:textStyle="bold"
-          />
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <ImageButton
             android:id="@+id/backBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_back"
-            android:background="@android:color/transparent"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            />
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back" />
+
         <ImageButton
             android:id="@+id/editProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit"
-            android:background="@android:color/transparent"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="20dp"
-            />
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_edit" />
     </RelativeLayout>
 
     <View
@@ -87,6 +88,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/detals"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
     android:orientation="horizontal"
     android:layout_below="@+id/emailTv"
     android:layout_marginTop="10dp"
@@ -104,7 +107,7 @@
             android:text="Accounts"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="16sp"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -112,7 +115,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:id="@+id/Accounts"
-            android:textSize="18sp"
+            android:textSize="12sp"
             />
 
     </LinearLayout>
@@ -161,16 +164,19 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:id="@+id/counts_Fav"
             />
 
     </LinearLayout>
-
-
-
-
 </LinearLayout>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:layout_marginTop="8dp"
+    android:layout_below="@+id/detals"
+    android:background="@color/gray3"
 
+    />
 
 </RelativeLayout>
