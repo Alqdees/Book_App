@@ -1,11 +1,12 @@
 package com.alqdees.bookapp;
 
-import static com.alqdees.bookapp.PdfDetailActivity.formatTimeStamp;
+
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,6 +85,7 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context,PdfDetailActivity.class);
+
                 intent.putExtra("bookId",bookId);
                 context.startActivity(intent);
             }
@@ -102,7 +104,7 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0){
                     Intent intent = new Intent(context,PdfEditActivity.class);
-                    intent.putExtra("bookId",bookId);
+//                    intent.putExtra("bookId",bookId);
                     context.startActivity(intent);
 
                 }else if (i == 1){

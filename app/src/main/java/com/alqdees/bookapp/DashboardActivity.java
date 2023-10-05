@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import com.alqdees.bookapp.databinding.ActivityDashboardBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -58,7 +59,7 @@ public class DashboardActivity extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),FragmentPagerAdapter.
                 BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,this);
                 categoryArrayList = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Category");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -87,14 +88,17 @@ public class DashboardActivity extends AppCompatActivity {
                         ,""+modelMostDownload.getCategory(),
                         ""+modelMostDownload.getUid()),modelMostDownload.getCategory()
                 );
+
                 viewPagerAdapter.notifyDataSetChanged();
                 for (DataSnapshot ds: snapshot.getChildren()){
+                    Log.d("onDataChange: _____", "onDataChange: "+ds.getValue());
                     ModelCategory model = ds.getValue(ModelCategory.class);
                     categoryArrayList.add(model);
                     viewPagerAdapter.addFragment(BookUserFragment.newInstance(""+model.getId()
                             ,""+model.getCategory()
                             ,""+model.getUid()),model.getCategory());
                     viewPagerAdapter.notifyDataSetChanged();
+//                    AdapterPdfUser adapterPdfUser = new AdapterPdfUser(DashboardActivity.this,categoryArrayList);
                 }
 
             }

@@ -91,7 +91,7 @@ public class DashboardAdminActivity extends AppCompatActivity {
     }
     private void loadCategories() {
         categoryArrayList = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Category");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ref.addValueEventListener(new ValueEventListener() {
             @Override

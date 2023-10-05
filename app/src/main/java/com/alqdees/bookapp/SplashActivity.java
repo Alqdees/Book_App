@@ -46,19 +46,30 @@ public class SplashActivity extends AppCompatActivity {
 
                     String usertype = (String) snapshot.child("usertype").getValue();
                     if (usertype.equals("user")){
-
+                        startActivity(new Intent(
+                                SplashActivity.this,
+                                DashboardActivity.class));
+                        finish();
                     }else if (usertype.equals("admin")){
-                        startActivity(new Intent(SplashActivity.this,DashboardAdminActivity.class));
+                        startActivity(new Intent(
+                                SplashActivity.this,
+                                DashboardAdminActivity.class));
                         finish();
                     }
                     else {
-                        Toast.makeText(SplashActivity.this, "لايوجد حساب مطابق ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(
+                                SplashActivity.this,
+                                "لايوجد حساب مطابق ",
+                                Toast.LENGTH_LONG).show();
                         finish();
                     }
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(SplashActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            SplashActivity.this,
+                            ""+error.getMessage(),
+                            Toast.LENGTH_SHORT).show();
                 }
             });
         }

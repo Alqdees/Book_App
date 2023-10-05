@@ -65,7 +65,7 @@ public class MyApplication extends Application {
         ref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Book");
                 reference.child(bookId).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
@@ -120,7 +120,8 @@ public class MyApplication extends Application {
             }
         });
     }
-    public static void loadPdfFromUrlSinglePage(String pdfUrl, PDFView pdfViewer, ProgressBar progressBar,TextView pagesTv) {
+    public static void loadPdfFromUrlSinglePage(String pdfUrl, PDFView pdfViewer,
+                                                ProgressBar progressBar,TextView pagesTv) {
 
         StorageReference ref = FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl);
         ref.getBytes(MAX_BYTES_PDF).addOnSuccessListener(new OnSuccessListener<byte[]>() {
@@ -175,7 +176,7 @@ public class MyApplication extends Application {
 
     public static void loadCategory(String categoryId ,TextView categoryTv) {
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Category");
 
         ref.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -197,7 +198,7 @@ public class MyApplication extends Application {
 
     public static void incrementBookViewCount(String bookId){
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Books");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Book");
 
         ref.child(bookId).addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -216,7 +217,7 @@ public class MyApplication extends Application {
 
                     hashMap.put("viewCount", ""+newViewCount);
 
-                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Book");
 
                     reference.child(bookId).updateChildren(hashMap);
 
@@ -264,14 +265,17 @@ public class MyApplication extends Application {
 
                         progressDialog.dismiss();
 
-                        Toast.makeText(context, "خطأ في التنزيل"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context,
+                                "خطأ في التنزيل"+e.getMessage(),
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
 
     }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
-    private static void saveDownloadBook(Context context, ProgressDialog progressDialog, byte[] bytes, String name, String bookId) {
+    private static void saveDownloadBook(Context context, ProgressDialog progressDialog,
+                                         byte[] bytes, String name, String bookId) {
         try{
             File downloadsFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
@@ -301,7 +305,7 @@ public class MyApplication extends Application {
 
     private static void incrementBookDownloadCount(String bookId) {
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Books");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Book");
         ref.child(bookId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -312,7 +316,7 @@ public class MyApplication extends Application {
                 int newDownloadsCount = Integer.parseInt(downloadsCount) + 1;
                 HashMap<String,Object> hashMap =new HashMap<>();
                 hashMap.put("downloadsCount",""+newDownloadsCount);
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Book");
                 reference.child(bookId).updateChildren(hashMap)
                         .addOnFailureListener(new OnFailureListener() {
                             @Override

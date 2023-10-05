@@ -79,7 +79,7 @@ public class PdfDetailActivity extends AppCompatActivity {
 
 
         loadBookDetails();
-        MyApplication.incrementBookViewCount(bookId);
+//        MyApplication.incrementBookViewCount(bookId);
 
         binding.downLoad.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.R)
@@ -126,7 +126,7 @@ public class PdfDetailActivity extends AppCompatActivity {
 
     private void loadBookDetails() {
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Books");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Book");
         ref.child(bookId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

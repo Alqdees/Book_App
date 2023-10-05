@@ -148,7 +148,7 @@ public class PdfAddActivity extends AppCompatActivity {
         hashMap.put("viewCount",""+0);
         hashMap.put("downloadsCount",""+0);
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Books");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Book");
         ref.child(""+timestamp).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
@@ -170,7 +170,7 @@ public class PdfAddActivity extends AppCompatActivity {
         categoryTitleArrayList = new ArrayList<>();
         categoryIdArrayList = new ArrayList<>();
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Category");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -100,7 +100,7 @@ public class BookUserFragment extends Fragment {
 
     private void loadAllBooks() {
         pdfArrayList = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Books");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Book");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -120,7 +120,7 @@ public class BookUserFragment extends Fragment {
     }
     private void loadMostViewDownloadBooks(String orderBy) {
         pdfArrayList = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Books");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Book");
         ref.orderByChild(orderBy)
                 .limitToLast(10).
                 addListenerForSingleValueEvent(new ValueEventListener() {
@@ -143,7 +143,7 @@ public class BookUserFragment extends Fragment {
     }
     private void loadCategorizedBooks(){
         pdfArrayList = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Books");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Book");
         ref.orderByChild("categoryId").equalTo(id).
                 addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

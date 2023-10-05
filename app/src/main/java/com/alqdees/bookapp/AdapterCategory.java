@@ -91,7 +91,7 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.Holder
 
     private void deleteCategory(ModelCategory model, HolderCategory holder) {
         String id =model.getId();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Category");
         ref.child(id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

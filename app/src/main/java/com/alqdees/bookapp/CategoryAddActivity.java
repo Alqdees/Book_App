@@ -71,7 +71,7 @@ public class CategoryAddActivity extends AppCompatActivity {
         hashMap.put("uid",""+firebaseAuth.getUid());
 
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Category");
         ref.child(""+timestamp).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
